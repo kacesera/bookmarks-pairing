@@ -1,11 +1,11 @@
+require 'pg'
+
 class BookmarkList
 
-  def initialize
-    @bookmarks = ['Bookmark 1', 'Bookmark 2', 'Bookmark 3']
-  end
-
   def all
-    @bookmarks.each { |bookmark| puts bookmark }
+    connection = PG.connect :dbname => 'bookmark_manager'
+    table = connection.exec "SELECT * FROM bookmarks"  
+    table.map { |bookmark| bookmark['url'] }  
   end
 
 end
