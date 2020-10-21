@@ -10,11 +10,12 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks' do
+    @bookmarks = Bookmark.all
     erb :bookmarks
   end
 
   post '/add_bookmarks' do
-    BookmarkList.create(params[:add_bookmark], params[:add_title])
+    Bookmark.create(url: params[:add_bookmark], title: params[:add_title])
     redirect to('/confirm')
   end
 

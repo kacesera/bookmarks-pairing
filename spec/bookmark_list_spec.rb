@@ -1,23 +1,30 @@
 require 'bookmark_list'
 
-describe BookmarkList do
+describe Bookmark do
 
   describe '.all' do 
     it 'returns a list of bookmarks' do
       test_connection
 
-      bookmarks = BookmarkList.all
+      bookmark1 = Bookmark.all.first
+      bookmark2 = Bookmark.all[1]
+      bookmark3 = Bookmark.all.last
 
-      expect(bookmarks).to include 'http://www.makersacademy.com'
-      expect(bookmarks).to include 'http://www.google.com'
-      expect(bookmarks).to include 'http://www.ahotdogisnotasandwich.com'
+      expect(bookmark1.title).to include 'Makers Academy'
+      expect(bookmark2.title).to include 'Google'
+      expect(bookmark3.title).to include 'A Hotdog is Not A Sandwich'
     end
   end
 
   describe '.create' do
-    it 'creates a bookmark to store in bookmark_list' do
-      BookmarkList.create("http://www.url.com", 'URL')
-      expect(BookmarkList.all).to include 'http://www.url.com'
+    it 'creates a new bookmark' do
+      bookmark = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
+      persisted_data = PG.connect(dbname: 'bookmark_manager_test').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
+
+      expect(bookmark).to be_a Bookmark
+      expect(bookmark.id).to eq persisted_data.first['id']
+      expect(bookmark.url).to eq 'http://www.testbookmark.com'
+      expect(bookmark.title).to eq 'Test Bookmark'
     end
   end
 
