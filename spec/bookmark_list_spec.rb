@@ -16,7 +16,7 @@ describe BookmarkList do
 
   describe '.create' do
     it 'creates a bookmark to store in bookmark_list' do
-      BookmarkList.create("http://www.url.com")
+      BookmarkList.create("http://www.url.com", 'URL')
       expect(BookmarkList.all).to include 'http://www.url.com'
     end
   end

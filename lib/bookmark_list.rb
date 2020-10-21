@@ -12,12 +12,12 @@ class BookmarkList
     table.map { |bookmark| bookmark['url'] }  
   end
 
-  def self.create(url)
+  def self.create(url, title)
     if ENV['RACK_ENV'] == "test"
       connection = PG.connect :dbname => 'bookmark_manager_test'
     else
       connection = PG.connect :dbname => 'bookmark_manager'
     end
-    connection.exec "INSERT INTO bookmarks (url) VALUES ('#{url}');"
+    connection.exec "INSERT INTO bookmarks (url, title) VALUES ('#{url}', '#{title}');"
   end
 end
