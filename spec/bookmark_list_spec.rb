@@ -13,4 +13,13 @@ describe BookmarkList do
       expect(bookmarks).to include 'http://www.ahotdogisnotasandwich.com'
     end
   end
+
+  describe '.create' do
+    it 'creates a bookmark to store in bookmark_list' do
+      BookmarkList.create("http://www.url.com")
+      expect(BookmarkList.all).to include 'http://www.url.com'
+    end
+  end
+
+
 end

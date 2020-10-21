@@ -13,6 +13,10 @@ bookmarks | list, show
 
 ![diagram for first user story](https://i.imgur.com/OCZvWaH.png)
 
+As a user,
+To declutter my browser,
+I'd would be like to be able to save pages I want to go back to
+
 ## Setting up your database
 
 **Create Bookmark Manager DB**
