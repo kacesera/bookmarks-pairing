@@ -10,7 +10,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks' do
-    session[:bookmarks] = BookmarkList.new
+    session[:bookmarks] = BookmarkList.all
     erb :index
   end
 

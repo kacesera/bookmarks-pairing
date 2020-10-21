@@ -2,7 +2,15 @@ require 'bookmark_list'
 
 describe BookmarkList do
 
-  it 'has bookmarks' do
-    expect(subject.all).to eq ['http://www.makersacademy.com', 'http://www.google.com', 'http://www.destroyallsoftware.com']
+  describe '.all' do 
+    it 'returns a list of bookmarks' do
+      test_connection
+
+      bookmarks = BookmarkList.all
+
+      expect(bookmarks).to include 'http://www.makersacademy.com'
+      expect(bookmarks).to include 'http://www.google.com'
+      expect(bookmarks).to include 'http://www.ahotdogisnotasandwich.com'
+    end
   end
 end

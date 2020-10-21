@@ -15,8 +15,17 @@ bookmarks | list, show
 
 ## Setting up your database
 
+**Create Bookmark Manager DB**
+
 1. Connect to ```psql``` in your terminal.
 2. Create the database using the psql command ```CREATE DATABASE bookmark_manager;```
 3. Connect to the database using the pqsl command ```\c bookmark_manager;```
 4. Run the query we have saved in the file ```01_create_bookmarks_table.sql```
+
+**Create Bookmark Manager TEST DB**
+
+Do the above again, with the following changes:
+
+- Step 2: ```CREATE DATABASE bookmark_manager_test;```
+- Step 3: ``` \c bookmark_manager_test;```
 
