@@ -15,7 +15,11 @@ bookmarks | list, show
 
 As a user,
 To declutter my browser,
-I'd would be like to be able to save pages I want to go back to
+I would be like to be able to save pages I want to go back to
+
+As a user,
+To to tidy/get rid no longer relevant bookmarks,
+I would like to delete bookmarks.
 
 ## Setting up your database
 
