@@ -1,7 +1,11 @@
-def test_connection
-  connection = PG.connect(dbname: 'bookmark_manager_test')
+require_relative '../lib/bookmark_list'
 
-  connection.exec ("INSERT INTO bookmarks (url, title) VALUES ('http://www.makersacademy.com', 'Makers Academy');")
-  connection.exec ("INSERT INTO bookmarks (url, title) VALUES ('http://www.google.com', 'Google');")
-  connection.exec ("INSERT INTO bookmarks (url, title) VALUES ('http://www.ahotdogisnotasandwich.com', 'A Hotdog is Not A Sandwich');")
+def test_connection
+  Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+  Bookmark.create(url: 'http://www.google.com', title: 'Google')
+  Bookmark.create(url: 'http://www.ahotdogisnotasandwich.com', title: 'A Hotdog is Not A Sandwich')
+end
+
+def add_bookmark_for_deletion
+  Bookmark.create(url: 'www.facebook.com', title: 'Facebook')
 end
